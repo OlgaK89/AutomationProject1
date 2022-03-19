@@ -32,11 +32,22 @@ public class Main {
         driver.findElement(By.id("hideLogin")).click();
 
         //Fill out the form with the required info
-        driver.findElement(By.id("username" )).sendKeys("Olga123");
+
+         String concat = "";
+        int randomInt1 = 65 + (int) (Math.random() * 26);
+        int randomInt2 = 65 + (int) (Math.random() * 26);
+        int randomInt3 = 97 + (int) (Math.random() * 26);
+        int randomInt4 = 97 + (int) (Math.random() * 26);
+        int randomInt5 = 48 + (int) (Math.random() * 9);
+        String generatedEmail = "" + (char) randomInt1 + (char) randomInt2 + (char) randomInt3 + (char) randomInt4 + (char) randomInt5 ;
+
+        driver.findElement(By.id("username" )).sendKeys(generatedEmail);
         driver.findElement(By.id("firstName" )).sendKeys("Olga");
         driver.findElement(By.id("lastName" )).sendKeys("Ku");
-        driver.findElement(By.id("email")).sendKeys("abc@gmail.com");
-        driver.findElement(By.id("email2" )).sendKeys("abc@gmail.com");
+
+
+        driver.findElement(By.id("email")).sendKeys(generatedEmail + "@gmail.com");
+        driver.findElement(By.id("email2")).sendKeys(generatedEmail + "@gmail.com");
         driver.findElement(By.id("password" )).sendKeys("123456");
         driver.findElement(By.id("password2" )).sendKeys("123456");
 
@@ -83,7 +94,7 @@ public class Main {
         Thread.sleep(2000);
       //Login using the same username and password when you signed up
 
-        driver.findElement(By.name("loginUsername")).sendKeys("Olga123");
+        driver.findElement(By.name("loginUsername")).sendKeys(generatedEmail);
         driver.findElement(By.name("loginPassword")).sendKeys("123456");
         driver.findElement(By.name("loginButton")).click();
 
